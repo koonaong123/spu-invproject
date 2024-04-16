@@ -1,0 +1,45 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* ทำให้ container เต็มจอ */
+}
+
+.invmap {
+    margin-top: 35px;
+    flex: 1; /* ให้ map ยืดขยายเต็มพื้นที่ที่เหลือ */
+}
+
+.address {
+    flex: 1; /* ให้ sidebar ยืดขยายเต็มพื้นที่ที่เหลือ */
+    padding: 20px;
+    align-items: center;
+}
+
+/* ตกแต่ง map และ sidebar ตามความเหมาะสม */
+.invmap iframe {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+.address img {
+    display: inline-block; /* แสดงไอคอนแบบ inline-block */
+    width: 24px; /* ปรับขนาดไอคอน */
+    height: 24px; /* ปรับขนาดไอคอน */
+    margin-right: 4px;
+  }
+  
+.address p1, p2, p3, p4 {
+    line-height: 1.6; /* กำหนดระยะห่างระหว่างบรรทัด */
+    margin-bottom: 10px; /* เพิ่มระยะห่างด้านล่างข้อมูลติดต่อแต่ละรายการ */
+  }
+
+.address a {
+    color: #000000; /* กำหนดสีของลิงค์ */
+    text-decoration: none; /* ลบเส้นใต้ของลิงค์ */
+  }
+
+.address a:hover {
+    color: #0056b3;
+}

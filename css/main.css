@@ -1,0 +1,135 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Kanit", sans-serif;
+    background-color: #ffffff;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    align-items: center; /* จัดเนื้อหาให้อยู่ตรงกลางตามแนวนอน */
+}
+
+.main-content {
+    margin: 0 auto;
+    flex: 2;
+    background-color: #ffffff;
+    padding: 20px;
+    justify-content: center;
+}
+
+.navbar {
+    background-color: #FFFFFF;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* เพิ่ม drop shadow */
+}
+
+.logo img {
+    height: 60px;
+}
+
+.nav-links {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nav-links li {
+    margin-left: 30px; /*ความห่างของ nav-links */
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #333; /* เปลี่ยนสีข้อความ */
+    font-weight: bold; /* ทำให้ตัวหนา */
+    transition: color 0.3s ease; /* เพิ่ม transition เมื่อโฮเวอร์ */
+}
+
+.nav-links a:hover {
+    color: #1C98C3; /* เปลี่ยนสีข้อความเมื่อโฮเวอร์ */
+}
+
+
+.nav-links li:first-child {
+    margin-left: auto;
+}
+
+.auth-buttons {
+    margin-left: 40px; /* เพิ่ม margin-left เข้าไปให้เพิ่มระยะห่าง */
+}
+
+.auth-buttons a.register {
+    color: #ffffff;
+    background-color: #1C98C3;
+    border: 1px solid #1C98C3;
+}
+
+.auth-buttons a.login {
+    color: #1C98C3;
+    background-color: transparent;
+    border: 1px solid #1C98C3;
+}
+
+.auth-buttons a {
+    text-decoration: none;
+    padding: 8px 15px;
+    border-radius: 4px;
+    margin-left: 10px;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.auth-buttons a.login:hover {
+    background-color: #1C98C3;
+    color: #ffffff;
+    border-color: #1C98C3;
+}
+
+.auth-buttons a.register:hover {
+    background-color: #0e7490;
+}
+
+.agmlogo {
+    flex: 1;
+}
+
+.agmlogo img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+.sidebar {
+    flex: 1;
+    background-color: #ffffff;
+    padding: 20px;
+}
+
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+footer p {
+    margin: 0;
+}
