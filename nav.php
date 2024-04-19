@@ -1,3 +1,18 @@
+<?php
+            if (isset($_SESSION['user_id'])) {
+                $user_id = $_SESSION['user_id'];
+            }
+
+            try {
+
+                $stmt = $conn->prepare("SELECT * FROM inv_customer WHERE id = ?");
+                $stmt->execute([$user_id]);
+                $userData = $stmt->fetch();
+
+            } catch (PDOException $e) {
+                echo "Error: " . $e->getMessage();
+            }
+        ?>
 <header>
         <nav class="navbar">
             <div class="logo">
@@ -9,8 +24,14 @@
                 <li><a href="/inventech/contact.php">ติดต่อเรา</a></li>
             </ul>
             <div class="auth-buttons">
+                <?php if (!isset($_SESSION['user_id'])) { ?>
                 <a href="/inventech/login.php" class="login">เข้าสู่ระบบ</a>
                 <a href="/inventech/register.php" class="register">สมัครสมาชิก</a>
+                <?php } else { ?>
+                <span class="user-name"><?php echo $userData['email'] ?></span>
+                <a href="/inventech/logout.php" class="logout">ออกจากระบบ</a>   
+                <?php } ?>
+                
             </div>
         </nav>
     </header>

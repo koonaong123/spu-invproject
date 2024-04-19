@@ -69,6 +69,18 @@ body {
     margin-left: auto;
 }
 
+.user-name {
+    color: #1C98C3; /* เปลี่ยนสีข้อความให้สอดคล้องกับสีของลิงก์ */
+    font-weight: bold; /* ทำให้ตัวหนา */
+    font-size: 1.1rem; /* ปรับขนาดตัวอักษรให้เหมาะสม */
+    margin-right: 20px; /* ระยะห่างขวาของ user-name */
+    transition: color 0.3s ease; /* เพิ่ม transition เมื่อเมาส์โฮเวอร์ */
+}
+
+.user-name:hover {
+    color: #0e7490; /* เปลี่ยนสีข้อความเมื่อโฮเวอร์ */
+}
+
 .auth-buttons {
     margin-left: 40px; /* เพิ่ม margin-left เข้าไปให้เพิ่มระยะห่าง */
 }
@@ -83,6 +95,12 @@ body {
     color: #1C98C3;
     background-color: transparent;
     border: 1px solid #1C98C3;
+}
+
+.auth-buttons a.logout {
+    color: #f94449;
+    background-color: transparent;
+    border: 1px solid #c90010;
 }
 
 .auth-buttons a {
@@ -102,6 +120,11 @@ body {
 
 .auth-buttons a.register:hover {
     background-color: #0e7490;
+}
+
+.auth-buttons a.logout:hover {
+    background-color: #f94449;
+    color: #ffffff;
 }
 
 .agmlogo {
@@ -125,9 +148,10 @@ footer {
     color: #fff;
     padding: 20px 0;
     text-align: center;
-    position: fixed;
-    bottom: 0;
+    bottom: 0px;
+    margin-top: 60px;
     width: 100%;
+    position: fixed;
 }
 
 footer p {
