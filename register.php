@@ -21,32 +21,30 @@
     <form action="/inventech/process/register_process.php" method="post" class="register-form">
             <h2>ลงทะเบียนเข้าใช้งาน</h2>
             <p>กรุณากรอกแบบฟอร์มนี้เพื่อสร้างบัญชี</p>
-
+            
             <?php if (isset($_SESSION['success'])) { ?>
                 <div class="alert alert-success" role="alert">
                     <?php
                         echo $_SESSION['success'];
-                        unset ($_SESSION['success']);
+                        unset ($_SESSION['success']); 
                     ?>
                 </div>
             <?php } ?>
-
             <?php if (isset($_SESSION['error'])) { ?>
                 <div class="alert alert-danger" role="alert">
                     <?php
                         echo $_SESSION['error'];
-                        unset ($_SESSION['error']);
+                        unset ($_SESSION['error']); 
                     ?>
                 </div>
             <?php } ?>
-
             <div class="input-group">
                 <label for="companyname">ชื่อบริษัท :</label>
                 <input type="text" id="company_name" name="company_name" required>
             </div>
             <div class="input-group">
                 <label for="email">อีเมล :</label>
-                <input type="email" id="email" name="email" required">
+                <input type="email" id="email" name="email" required>
             </div>
             <div class="input-group">
                 <label for="customername">ชื่อผู้ติดต่อ :</label>
@@ -74,7 +72,7 @@
                     <label for="policy"><span>ยอมรับ </span><a href="https://pdpa.ditp.go.th/content/policy" target="_blank">ข้อกำหนดเงื่อนไขและการใช้บริการ</a></label>
                 </div>
             </div>
-            <button type="submit" class="registerbtn">Register</button>
+            <button type="submit" class="registerbtn" name="registerbtn" id="registerbtn">Register</button>
         </form>
     </div>
     <footer>
