@@ -1,21 +1,26 @@
-// สคริปต์ตรวจสอบการใช้ผสมpassword
-function myFunction1() {
-    const password = document.getElementById('c_pwd');
-    const errorMessage = document.querySelector('.error-message');
+window.onload = function() {
+  const form = document.querySelector('.register-form');
 
-    password.addEventListener('input', function() {
-      const passwordValue = this.value;
-      const hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(passwordValue);
-      const hasNumber = /\d/.test(passwordValue);
-      const hasLetter = /[a-zA-Z]/.test(passwordValue);
-      const hasLength = passwordValue.length >= 8;
-  
-      if (hasSpecialChar && hasNumber && hasLetter && hasLength) {
-        // รหัสผ่านถูกต้อง ซ่อนข้อความแจ้งเตือน
-        errorMessage.style.display = 'none';
+  form.addEventListener('submit', function(event) {
+      const password = document.getElementById('password').value;
+      const confirmPassword = document.getElementById('confirmpassword').value;
+      const errorMessagePwd = document.querySelector('.error-message-pwd');
+      const errorMessagePwdcf = document.querySelector('.error-message-pwdcf');
+
+      // เช็ครหัสผ่าน
+      if (password.length < 8 || !(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(password)) || !(/\d/.test(password)) || !(/[a-zA-Z]/.test(password))) {
+          errorMessagePwd.style.display = 'block';
+          event.preventDefault(); // หยุดการส่งแบบฟอร์ม
       } else {
-        // รหัสผ่านไม่ถูกต้อง แสดงข้อความแจ้งเตือน
-        errorMessage.style.display = 'block';
+          errorMessagePwd.style.display = 'none';
       }
-    });
-}
+
+      // เช็คการยืนยันรหัสผ่าน
+      if (password !== confirmPassword) {
+          errorMessagePwdcf.style.display = 'block';
+          event.preventDefault(); // หยุดการส่งแบบฟอร์ม
+      } else {
+          errorMessagePwdcf.style.display = 'none';
+      }
+  });
+};
