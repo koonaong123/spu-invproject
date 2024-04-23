@@ -2,6 +2,11 @@
 
     session_start();
     require './config/config.php';
+
+    if (!isset($_SESSION['user_id'])) {
+        header("location: /inventech/login.php");
+    }
+
 ?>
 
 <!DOCTYPE html>
@@ -17,6 +22,22 @@
     <?php include('nav.php'); ?>
     <!-- end -->
     <div class="container">
+        <?php
+            if (isset($_SESSION['user_id'])) {
+                $user_id = $_SESSION['user_id'];
+            }
+
+            try {
+
+                $stmt = $conn->prepare("SELECT * FROM inv_customer WHERE id = ?");
+                $stmt->execute([$user_id]);
+                $userData = $stmt->fetch();
+
+            } catch (PDOException $e) {
+                echo "Error: " . $e->getMessage();
+            }
+        ?>
+
         <section class="agmlogo">
             <img src="img/main.svg" alt="AGM LOGO">
         </section>
