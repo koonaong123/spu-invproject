@@ -1,3 +1,16 @@
+<?php
+    session_start();
+
+    // ตรวจสอบการเข้าสู่ระบบ
+    if (!isset($_SESSION['user_id'])) {
+        echo '<script>alert("กรุณาเข้าสู่ระบบ"); window.location.href = "login.php";</script>';
+        exit();
+    }
+
+    // ตรวจสอบขั้นตอนปัจจุบัน
+    $currentStep = isset($_GET['step']) ? $_GET['step'] : 1;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,23 +18,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Website</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/booking.css">
 </head>
 <body>
     <!-- include nav -->
     <?php include('nav.php'); ?>
     <!-- end -->
-    
-    <div class="container">
-        <section class="agmlogo">
-            <img src="img/main.svg" alt="AGM LOGO">
+    <div class="wrapper">
+        <section class="step">
+            <ul class="step-list">
+                <li class="step-item <?php if ($currentStep == 1) echo 'current-item'; ?>">
+                    <span class="progress-count">1</span>
+                    <span class="progress-label">แพ็คเกจ</span>
+                </li>
+                <li class="step-item <?php if ($currentStep == 2) echo 'current-item'; ?>">
+                    <span class="progress-count">2</span>
+                    <span class="progress-label">เลือกชุดอุปกรณ์</span>
+                </li>
+                <li class="step-item <?php if ($currentStep == 3) echo 'current-item'; ?>">
+                    <span class="progress-count">3</span>
+                    <span class="progress-label">เวลานัดหมาย</span>
+                </li>
+                <li class="step-item <?php if ($currentStep == 4) echo 'current-item'; ?>">
+                    <span class="progress-count">4</span>
+                    <span class="progress-label">ยืนยันการจอง</span>
+                </li>
+            </ul>
         </section>
-        <aside class="sidebar">
-            <h2>Inventech Systems <br><br></h2>
-            <p1>ผู้ให้บริการระบบงานซอฟท์แวร์ด้วยเทคโนโลยีที่ทันสมัย “มุ่งมั่นในการพัฒนา เดินหน้าด้วยคุณภาพของการบริการ บนมาตรฐานความปลอดภัยระดับสากล” <br><br></p1>
-            <p2>ด้วยประสบการณ์มากกว่า 20 ปี เราได้พัฒนาระบบงานต่าง ๆ มากมาย โดยได้อยู่บนพื้นฐานของความถูกต้อง และเกิดประโยชน์ จากการใช้งานจริง และรวมถึงเป็นผู้ให้บริการระบบประชุมผู้ถือหุ้น อันดับหนึ่งที่มีมาตรฐานการบริการสูงสุดและครอบคลุมกลุ่มลูกค้าจดทะเบียนในทุกกลุ่มธุรกิจ ด้วยแรงการสนับสนุนและความเชื่อมั่นจากลูกค้าของเรานี้ เป็นเสมือนดั่งแรงผลักดันให้เรายังคงมุ่งมั่นในการพัฒนาและขยายระบบบริการใหม่ ๆ ให้ครอบคลุมและตอบสนองต่อความต้องการของลูกค้าได้อย่างยั่งยืน</p2>
-        </aside>
-    </div>
 
+        <!-- เนื้อหาของแต่ละขั้นตอน -->
+        <?php 
+            $stepFile = 'step' . $currentStep . '.php';
+            include($stepFile);
+        ?>
+    </div>
     <footer>
         <p>&copy; 2024 Inventech AGM Booking. All rights reserved.</p>
     </footer>
